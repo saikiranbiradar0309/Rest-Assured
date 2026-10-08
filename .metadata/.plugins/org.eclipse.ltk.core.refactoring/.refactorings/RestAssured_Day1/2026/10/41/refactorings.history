@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;RestAssured_Day1/src/test/resources/RequestPayload.json&apos; to &apos;PostRequestPayload.json&apos;" description="Rename resource &apos;RequestPayload.json&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/test/resources/RequestPayload.json" name="PostRequestPayload.json" stamp="1791487453299" updateReferences="true"/>
-</session>

@@ -2,6 +2,9 @@
 # Rest-Assured / Java / Spring Boot - Root .gitignore
 # ============================================================
 
+# Eclipse workspace
+.metadata/
+
 # Maven
 **/target/
 **/pom.xml.tag
