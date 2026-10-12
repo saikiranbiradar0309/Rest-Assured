@@ -1,0 +1,92 @@
+01. Lets see how can we generate JSON Schema file
+	
+	- When i ran Signin_Using_Post_Request.java I got below output
+	  
+	  {
+    		"id": 2,
+    		"email": "admin1@gmail.com",
+    		"firstName": "Admin",
+    		"lastName": "Admin",
+    		"role": "ADMIN",
+    		"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwiaWF0IjoxNzkxODIyNDUzLCJleHAiOjE3OTE5MDg4NTN9.i05Qx3iSFYoPTtCB7crrPaXIHnSE2UjqvTmmh5tiQuUKbIAEBQThHB9qbGlcY9my33S9B-aSOXrir-XAWfHn-g"
+	  }
+	  
+
+	- 
+{
+	"type":"object",
+	
+	"additionalProperties": false,
+	
+	"properties":
+	{
+		"id":
+		{
+			"type":"integer",
+			"pattern":"^[0-9]+$"
+			
+		},
+		
+		"email":
+		{
+			"type":"string",
+			"pattern":"^[A-Za-z0-9._%]"
+		},
+		
+		"firstName":
+		{
+			"type":"string",
+			"pattern":"^[A-Za-z]+$"
+		},
+		
+		"lastName":
+		{
+			"type":"string",
+			"pattern":"^[A-Za-z]+$"
+		},
+		
+		"role":
+		{
+			"type":"string",
+			"pattern":"^[A-Za-z]+$"
+		},
+		
+		"token":
+		{
+			"type":"string"
+		}
+		
+	}
+	
+	
+	"required":["id","email","firstName","lastName","role","token"]
+}
+
+=======
+
+Verify JSON Schema in Rest Assured
+	
+	- We verify JSON Schema in Rest Assured by Schema Validator Dependency
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

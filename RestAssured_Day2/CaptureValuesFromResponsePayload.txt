@@ -1,0 +1,15 @@
+How to Capture any values from Response Payload?
+
+Step1: Capture JsonPath Object so we can capture values from response payload
+	 	
+	 	JsonPath jsonPath = response.jsonPath();
+	 	
+
+Step2: capture id
+		int id =  jsonPath.getInt("id");
+		
+		
+		capture token
+		String token = jsonPath.getString("token");
+		
+		
