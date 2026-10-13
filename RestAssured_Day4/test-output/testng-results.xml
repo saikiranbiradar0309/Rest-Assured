@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="7" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-10-13T17:02:02 IST" name="Default suite" finished-at="2026-10-13T17:02:03 IST" duration-ms="1184">
+    <groups>
+    </groups>
+    <test started-at="2026-10-13T17:02:02 IST" name="Default test" finished-at="2026-10-13T17:02:03 IST" duration-ms="1184">
+      <class name="MadeEasyTutorial.MadeEasyApi">
+        <test-method signature="validateAdminLoginApi()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:02 IST" name="validateAdminLoginApi" finished-at="2026-10-13T17:02:03 IST" duration-ms="844" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateAdminLoginApi -->
+        <test-method signature="validateAddNewCategoryApi()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:03 IST" name="validateAddNewCategoryApi" finished-at="2026-10-13T17:02:03 IST" depends-on-methods="MadeEasyTutorial.MadeEasyApi.validateAdminLoginApi" duration-ms="90" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateAddNewCategoryApi -->
+        <test-method signature="validateAddNewProductApi()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:03 IST" name="validateAddNewProductApi" finished-at="2026-10-13T17:02:03 IST" depends-on-methods="MadeEasyTutorial.MadeEasyApi.validateAddNewCategoryApi" duration-ms="39" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateAddNewProductApi -->
+        <test-method signature="validateGetNewCategoryApi()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:03 IST" name="validateGetNewCategoryApi" finished-at="2026-10-13T17:02:03 IST" depends-on-methods="MadeEasyTutorial.MadeEasyApi.validateAddNewCategoryApi" duration-ms="24" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateGetNewCategoryApi -->
+        <test-method signature="validateGetProductApi()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:03 IST" name="validateGetProductApi" finished-at="2026-10-13T17:02:03 IST" depends-on-methods="MadeEasyTutorial.MadeEasyApi.validateAddNewProductApi" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateGetProductApi -->
+        <test-method signature="validateUploadProductImage()[pri:0, instance:MadeEasyTutorial.MadeEasyApi@1ea9f6af]" started-at="2026-10-13T17:02:03 IST" name="validateUploadProductImage" finished-at="2026-10-13T17:02:03 IST" depends-on-methods="MadeEasyTutorial.MadeEasyApi.validateGetProductApi" duration-ms="159" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateUploadProductImage -->
+      </class> <!-- MadeEasyTutorial.MadeEasyApi -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

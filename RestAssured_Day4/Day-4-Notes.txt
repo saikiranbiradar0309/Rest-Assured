@@ -1,0 +1,7 @@
+01. Authentication Types
+	
+	a. Basic Auth
+	b. Digest 
+	c. Bearer/ Access token / JWT
+	d. Generate access tokken and Refresh token in Rest Assured
+	e. OAuth1.0	

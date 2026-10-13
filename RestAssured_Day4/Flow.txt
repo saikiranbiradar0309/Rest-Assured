@@ -1,0 +1,76 @@
+Flow
+
+1. Lets create an package called MadeEasyTutorial
+
+2. Lets create an class called MadeEasyApi
+
+3. First we will validate Admin Login API
+
+4. Then we validate add new category api
+
+5. Then we validate Get NewCategory Api
+
+6. Then we validate Delete Category Api
+
+7. Open Postman
+	--> Enter Application URL (POST) : http://localhost:8189/auth/signin
+	--> Body --> Raw --> 
+	    {
+  			"email": "admin1@gmail.com",
+  			"password": "admin123"
+		}
+		
+	--> Check what is the status code you will get (You should get 201)
+
+
+8. Lets store Request Payload 
+	--> src/test/resources
+	--> New Package --> Payload
+	--> Create File --> AdminLoginPayload.json
+		{
+  			"email": "admin1@gmail.com",
+  			"password": "admin123"
+		}
+
+
+
+9. Now lets add Categorys
+	--> http://localhost:8189/category
+	--> Copy this RequestBody
+		{
+			"categoryName":"string",
+			"description":"string"
+		}
+		
+	--> Create File --> NewCategoryPayload.json
+		{
+			"categoryName":"Mobiles",
+			"description":"All Mobiles are Available"
+		}
+	
+	
+
+10. Now lets Add new Products
+	--> http://localhost:8189/products
+	--> Copy this RequestBody
+			{
+			  "name": "string",
+			  "price": 0,
+			  "description": "string",
+			  "stock": 0,
+			  "categoryId": 0,
+			  "expDate": "2026-10-13"
+			}
+	
+	--> CreateFile --> NewProductPayload.json
+			{
+			  "name": "Samsung s25",
+			  "price": 62000,
+			  "description": "Samsung s25 with ultra wide camera",
+			  "stock": 10,
+			  "categoryId": 0,
+			  "expDate": "2028-10-13"
+			}
+
+			
+11. Uploading file
