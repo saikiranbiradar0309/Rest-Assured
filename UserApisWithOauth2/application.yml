@@ -1,0 +1,3 @@
+oauth2:
+  access-token-validity: 3600
+  refresh-token-validity: 86400
