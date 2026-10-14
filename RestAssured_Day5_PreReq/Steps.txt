@@ -1,0 +1,303 @@
+Pre Req
+
+Create an Excel file like above for Reference
+and The project we're following is UserApisWithOauth2
+
+
+===========================================================
+
+Steps
+
+Step 1: Open Postman tool
+
+
+===========================================================
+
+
+Step 2: Create New Workspace --> Oauth2 
+        Create New Workspace --> OAuth2 Flow Public APIs --> Public     (Followed in this)
+
+
+===========================================================
+
+
+Step 3: Create New Collection --> Name (OAuth2 Collection )
+
+
+===========================================================
+
+
+Step 4: Create a Folder inside OAuth2 Collection (Name:  Permission APIs)
+
+        a. Add Request --> Name (Get all Permission)
+
+        b. GET --> http://localhost:9080/permissions --> Send
+        
+        ------------------------------------------------------------------------------
+
+        c. Add Request --> Name (Create New Permission)
+
+        d. POST --> http://localhost:9080/permissions --> Body --> raw --> JSON (COPY CREATE PERMISSION EXAMPLE BODY FROM EXCEL)
+                {
+                    "permissionName": "read write",
+                    "description": "Admin can access read all APIs"
+                }
+            
+            Send
+
+            Lets store the ID number globally
+            Scripts --> Post-response --> const responsePayload = pm.response.json();
+                                          pm.globals.set("permissionId", responsePayload.id);
+            
+            Send
+        
+
+        ------------------------------------------------------------------------------
+
+        e. Add Request --> Name (Create New Permission As Per ID)
+
+        f. GET --> http://localhost:9080/permissions/1 --> Send
+
+
+===========================================================
+
+
+Step 5: Create a Folder inside OAuth2 Collection (Name:  Role APIs)
+
+        a. Add Request --> Name (Get all Roles)
+
+        b. GET --> http://localhost:9080/roles --> Send
+
+
+        ------------------------------------------------------------------------------
+
+        c. Add Request --> Name (Create New Role)
+
+        d. POST --> http://localhost:9080/roles --> Body -- raw --> Json
+            {
+                "roleName" : "ROLE_CUSTOMER",
+                "description" : "New Customer Role"
+            }
+
+            SEND
+
+            NOTE: WE CANNOT ABLE TO CREATE DUPLICATE ROLES
+
+
+        ------------------------------------------------------------------------------
+        
+        e. Add Request --> Name (GET Role As Per Role ID)
+
+        f. GET --> http://localhost:9080/roles/2   --> SEND
+
+
+        ------------------------------------------------------------------------------
+
+        g. Add Request --> Name (Assign Permission To Role)             IMPORTANT ********
+
+        h. POST --> http://localhost:9080/roles/2/permissions/2
+
+
+           NOTE: GET Role ID From Get All Permissions     
+                 GET Permission ID From Get All Roles
+
+
+===========================================================
+
+
+Step 6: Create a Folder inside OAuth2 Collection (Name:  User APIs)
+
+        a. Add Request --> Name (Get All Users)
+
+        b. GET --> http://localhost:9080/users --> Send
+
+
+        ------------------------------------------------------------------------------
+
+        c. Add Request --> Name (Create New User)
+
+        d. POST --> http://localhost:9080/users --> Body --> raw --> JSON
+                    {
+                    "username": "Sai",
+                    "password": "Sai123",
+                    "email": "sai@gmail.com",
+                    "firstName": "Saikiran",
+                    "lastName": "Biradar",
+                    "roles": [
+                        "ROLE_ADMIN"
+                    ]
+                    }
+           
+           SEND
+
+           Get ID Number so we can paste below
+        
+        ------------------------------------------------------------------------------
+
+        e. Add Request --> Name (Get Single User)
+
+        f. GET --> http://localhost:9080/users/1 --> Send
+
+
+        ------------------------------------------------------------------------------
+
+        g. Add Request --> Name (Assign Role to User)
+
+        h. POST --> http://localhost:9080/users/1/roles/2 --> SEND
+
+
+===========================================================
+
+
+Step 7: Create a Folder inside OAuth2 Collection (Name:  Client APIs)
+
+        a. Add Request --> Name (Get All Client)
+
+        b. GET --> http://localhost:9080/oauth2/clients --> SEND
+
+
+        ------------------------------------------------------------------------------
+
+        c. Add Request --> Name (Create New Client)
+
+        d. POST --> http://localhost:9080/oauth2/clients --> Body --> raw --> JSON
+                {
+                "clientId": "employee_client",
+                "clientSecret": "employee_secret",
+                "clientName": "employee_client",
+                "grantTypes": "password",
+                "scopes": "read write",
+                "accessTokenValidity": 600,
+                "refreshTokenValidity": 78600
+                }
+            
+            SEND
+
+        ------------------------------------------------------------------------------
+
+        e. Add Request --> Name (Get Single Client)
+
+        f. GET --> http://localhost:9080/oauth2/clients/1 --> SEND
+
+
+===========================================================
+Step 8: Create a Folder inside OAuth2 Collection (Name:  Access Token APIs)
+
+        a. Add Request --> Name (Generate Access Token Using Password Grant Type - We Re-Authenticate Authentication Server)
+
+        b. POST --> http://localhost:9080/oauth2/token --> Body --> x-www-form-urlencoded
+
+            Key                     value                   
+            grant_type              password
+            client_id               employee_client
+            client_secret           employee_secret
+            username                Sai
+            password                Sai123
+            scope                   read write
+
+
+            SEND
+
+
+            const responseBody = pm.response.json();
+            pm.globals.set("accessToken", responseBody.accessToken);
+            pm.globals.set("refreshToken", responseBody.refreshToken);
+
+
+Step 9: refresh-token-controller
+
+        a. Add Request --> Name (Generate Access Token Using Refresh Token - If Access Token Is Expired)
+
+        b. POST --> http://localhost:9080/oauth2/refresh --> Body --> raw
+                {
+                    "refreshToken": "{{refreshToken}}"
+                }
+        
+        C. Store The token globally --> Scripts --> Post-response
+            const responseBody = pm.response.json();
+            pm.globals.set("accessToken", responseBody.accessToken);
+            pm.globals.set("refreshToken", responseBody.refreshToken);
+
+
+===========================================================
+
+IMPORTANT: START UserApiOauth2ResourceServer APPLICATION
+
+
+Step 10: Create a Folder inside OAuth2 Collection (Name:  Employee APIs)
+         
+         a. Add Request --> Name (Get All Employee)
+
+         b. GET --> http://localhost:9081/employees --> SEND
+
+            NOTE:
+            - Here we'll get 401 Unauthorized 
+            - Click on Authorization --> Auth Type OAuth 2.0 --> Token {{accessToken}}
+
+            SEND --> Now you will get 200 OK response
+
+        ------------------------------------------------------------------------------
+         
+         c. Add Request --> Name (Create Employee)
+
+         d. POST --> http://localhost:9081/employees --> Body --> raw --> JSON
+
+                {
+                "name": "Sneha",
+                "email": "sneha@gmail.com",
+                "department": "WorkDay Analist",
+                "salary": 139999,
+                "createdAt": "2026-10-14T08:34:57.637Z"
+                }
+
+                SEND
+
+                NOTE:
+                - Here we'll get 401 Unauthorized 
+                - Click on Authorization --> Auth Type OAuth 2.0 --> Token {{accessToken}}
+        
+        ------------------------------------------------------------------------------
+         
+         e. Add Request --> Name (Get Single Employee)
+
+         f. GET --> http://localhost:9081/employees/1 --> SEND
+            
+            NOTE:
+            - Here we'll get 401 Unauthorized 
+            - Click on Authorization --> Auth Type OAuth 2.0 --> Token {{accessToken}}
+        
+
+        ------------------------------------------------------------------------------
+
+         g. Add Request --> Name (Update Employee)
+
+         h. PUT --> http://localhost:9081/employees/1 --> Body --> raw --> JSON
+            (HERE WE'RE ONLY UPDATING NAME)
+
+            {
+                "name": "Sneha Karajagi",
+                "email": "sneha@gmail.com",
+                "department": "WorkDay Analist",
+                "salary": 139999,
+                "createdAt": "2026-10-14T08:34:57.637Z"
+            }
+
+
+            NOTE:
+            - Here we'll get 401 Unauthorized 
+            - Click on Authorization --> Auth Type OAuth 2.0 --> Token {{accessToken}}
+        
+
+        ------------------------------------------------------------------------------
+
+        i. Add Request --> Name (Delete Employee)
+
+        j. DELETE --> http://localhost:9081/employees/1 --> SEND
+
+           NOTE:
+            - Here we'll get 401 Unauthorized 
+            - Click on Authorization --> Auth Type OAuth 2.0 --> Token {{accessToken}}
+        
+
+
+

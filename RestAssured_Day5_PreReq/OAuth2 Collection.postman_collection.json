@@ -1,0 +1,617 @@
+{
+  "info": {
+    "_postman_id": "dc8d99f0-32da-4e03-9d25-7275f78c88d3",
+    "name": "OAuth2 Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39508499",
+    "_collection_link": "https://go.postman.co/collection/39508499-dc8d99f0-32da-4e03-9d25-7275f78c88d3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Permission APIs--(Testers Dont Have Access to Permission APIs)",
+      "item": [
+        {
+          "name": "Get all Permission",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/permissions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "permissions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Permission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const responsePayload = pm.response.json();\npm.globals.set(\"permissionId\", responsePayload.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"permissionName\": \"read write\",\n    \"description\": \"Admin can access read all APIs\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/permissions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "permissions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Permission As Per ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/permissions/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "permissions",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Role APIs--(Testers Dont Have Access to Role APIs)",
+      "item": [
+        {
+          "name": "GET all Roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "roles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Role",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"roleName\" : \"ROLE_ADMIN\",\n    \"description\" : \"New ADMIN Role\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "roles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Role As Per Role ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/roles/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "roles",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Permission To Role",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/roles/2/permissions/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "roles",
+                "2",
+                "permissions",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User APIs",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create New User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"username\": \"Sai\",\n   \"password\": \"Sai123\",\n   \"email\": \"sai@gmail.com\",\n   \"firstName\": \"Saikiran\",\n   \"lastName\": \"Biradar\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n        ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/users/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Role to User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/users/1/roles/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "users",
+                "1",
+                "roles",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Client APIs",
+      "item": [
+        {
+          "name": "Get All Client",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/oauth2/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "oauth2",
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Client",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"clientId\": \"employee_client\",\n   \"clientSecret\": \"employee_secret\",\n   \"clientName\": \"employee_client\",\n   \"grantTypes\": \"password\",\n   \"scopes\": \"read write\",\n   \"accessTokenValidity\": 600,\n   \"refreshTokenValidity\": 86400\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/oauth2/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "oauth2",
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Client",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9080/oauth2/clients/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "oauth2",
+                "clients",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Access Token APIs",
+      "item": [
+        {
+          "name": "Generate Access Token Using Password Grant Type - We Re-Authenticate Authentication Server",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const responseBody = pm.response.json();\npm.globals.set(\"accessToken\", responseBody.accessToken);\npm.globals.set(\"refreshToken\", responseBody.refreshToken);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "password"
+                },
+                {
+                  "key": "client_id",
+                  "value": "employee_client"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "employee_secret"
+                },
+                {
+                  "key": "username",
+                  "value": "Sai"
+                },
+                {
+                  "key": "password",
+                  "value": "Sai123"
+                },
+                {
+                  "key": "scope",
+                  "value": "read write"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:9080/oauth2/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "oauth2",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Access Token Using Refresh Token - If Access Token Is Expired",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const responseBody = pm.response.json();\npm.globals.set(\"accessToken\", responseBody.accessToken);\npm.globals.set(\"refreshToken\", responseBody.refreshToken);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9080/oauth2/refresh",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9080",
+              "path": [
+                "oauth2",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee APIs",
+      "item": [
+        {
+          "name": "Get All Employee",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9081/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9081",
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                },
+                {
+                  "key": "tokenType",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Datta\",\n  \"email\": \"datta@gmail.com\",\n  \"department\": \"AI Engineer\",\n  \"salary\": 109999,\n  \"createdAt\": \"2026-10-14T08:34:57.637Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9081/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9081",
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Employee",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9081/employees/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9081",
+              "path": [
+                "employees",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Employee",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Sneha Karajagi\",\n    \"email\": \"sneha@gmail.com\",\n    \"department\": \"WorkDay Analist\",\n    \"salary\": 139999,\n    \"createdAt\": \"2026-10-14T08:34:57.637Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9081/employees/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9081",
+              "path": [
+                "employees",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
