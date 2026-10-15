@@ -1,0 +1,60 @@
+Pre-Req
+
+Import UserApiOauth2ResourceServer and UserApisWithOauth2 Projects
+
+
+First start the UserApisWithOauth2
+
+Then start UserApiOauth2ResourceServer
+
+================================
+
+Generate access token and refresh token by authenticating the authorization server
+
+================================
+
+Use access token to access Protected APIs
+
+================================
+
+Create OAuth2UserAPIs Package --> UserApis.java
+================================
+
+
+Access token usually expires in some seconds/minutes
+
+Refresh token usually expires in 1 day / 2 day/ 30 days/ 6 months etc
+
+================================
+
+In my current framework expiry time for AccessToken is 15 Minutes and For refresh token is 3 days
+
+If Access Token is expired, we re-generate the new access token by using the refresh token
+
+If both access token and refresh token expired we regenerate both token token by sending the same request one more time
+by authenticating the authorization server
+
+
+================================
+
+To CREATE AN EMPLOYEE
+
+Lets store request payload inside src/test/resource
+
+	a. src/test/resource --> Create folder --> payload
+	
+	b. Inside Payload create createEmployeePayload.json
+	
+	c. visit http://localhost:9081/swagger-ui/index.html --> POST /employees --> Copy request body
+
+================================
+
+
+TO UPDATE AN EMPLOYEE
+
+Lets store request payload inside src/test/resource
+
+	a. src/test/resource --> Create folder --> payload
+	
+	b. Inside Payload create updateEmployeePayload.json
+
