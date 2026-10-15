@@ -26,6 +26,8 @@ public class EmployeeTest {
 		emp.setMobileNumber("8765431097");
 		emp.setCountry("INDIA");
 		
+		
+		// DOnt fail to add this
 		request.contentType(ContentType.JSON);
 		
 		// Rest Assured will convert Java Object into JSON object	--> Serialization Concept
