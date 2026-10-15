@@ -1,0 +1,99 @@
+Visit URL
+
+ https://jsonplaceholder.typicode.com/posts/1
+ 
+ ----------------------------
+ 
+ 
+ Open Postman 
+ 
+ Create new Collection
+ 
+ POST : https://jsonplaceholder.typicode.com/posts
+ 
+ Body --> raw --> JSON
+ 
+{
+
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+
+SEND
+ 
+ 
+Check What it will generate Automatically whether its ID or userId 
+
+
+If its generating Id then we need to specify userId
+
+
+{
+  "userId": 101
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+ 
+----------------------------
+
+IMPORTANT: ALWAYS TAKE POJO CLASS NAMES AS LIKE ENDPOINT NAME FOR EXAMPLE:
+
+This is our endpoint: https://jsonplaceholder.typicode.com/posts
+
+Here it like 
+
+public class Posts
+{
+
+}
+
+
+----------------------------
+======================================================
+
+
+Open Postman 
+ 
+ Create new Collection
+ 
+ POST : https://jsonplaceholder.typicode.com/comments
+ 
+ Body --> raw --> JSON
+ 
+{
+  "name": "id labore ex et quam laborum",
+  "email": "Eliseo@gardner.biz",
+  "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+}
+
+SEND
+ 
+ 
+Check What it will generate Automatically whether its id or postId 
+
+
+If its generating id then we need to specify postId
+
+
+{
+  "postId": 502,
+  "name": "id labore ex et quam laborum",
+  "email": "Eliseo@gardner.biz",
+  "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+}
+
+
+======================================================
+
+Nested_POJO
+
+https://fakestoreapi.com/products/1
+
+======================================================
+
+
+Multi Level Nested POJO
+
+https://fakestoreapi.com/users/1
+
+======================================================
