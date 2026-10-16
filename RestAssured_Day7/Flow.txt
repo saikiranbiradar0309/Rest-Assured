@@ -1,0 +1,16 @@
+Multi Level Nested POJO
+
+https://jsonplaceholder.typicode.com/users/1
+
+
+======================================================
+
+Nested POJO with Array
+
+https://api.escuelajs.co/api/v1/products/23
+
+======================================================
+
+Complex POJO with Multiple Data Types and Collections
+
+https://api.fake-rest.refine.dev/users/1
